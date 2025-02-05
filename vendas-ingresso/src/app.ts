@@ -155,7 +155,7 @@ app.get("/events", async (req, res) => {
 });
 
 app.get("/events/:eventId", async (req, res) => {
-    const {eventId } = req.params;
+    const { eventId } = req.params;
     const connection = await createConnection();
 
     try {    
@@ -179,7 +179,7 @@ app.get("/events/:eventId", async (req, res) => {
 
 app.post("/partners/events", async (req, res) => {
     const { name, description, date, location } = req.body;
-    const userId = req.user!.id; // Pedir para o chatgpt me explicar essa parte
+    const userId = req.user!.id; // O ! ele informa ao compilador que req.user nunca será null ou undefined.
 
     const connection = await createConnection();
     try {
@@ -217,7 +217,7 @@ app.post("/partners/events", async (req, res) => {
 });
 
 app.get("/partners/events", async (req, res) => {
-    const userId = req.user!.id; // Pedir para o chatgpt me explicar essa parte
+    const userId = req.user!.id; // O ! ele informa ao compilador que req.user nunca será null ou undefined.
 
     const connection = await createConnection();
     try {
@@ -244,7 +244,7 @@ app.get("/partners/events", async (req, res) => {
 
 app.get("/partners/events/:eventId", async (req, res) => {
     const {eventId } = req.params;
-    const userId = req.user!.id; // Pedir para o chatgpt me explicar essa parte
+    const userId = req.user!.id; // O ! ele informa ao compilador que req.user nunca será null ou undefined.
 
     const connection = await createConnection();
     try {
