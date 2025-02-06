@@ -8,4 +8,6 @@ export function createConnection() {
          database: 'tickets',
          port: 33060
      })
- }
+}
+
+// Pool de conexões -> Consigo trabalhar com conexões simultaneas
