@@ -102,12 +102,12 @@ Authorization: Bearer {{ tokenPartner1 }}
 ### Listagem de eventos
 GET http://localhost:3000/events
 
-### Listagem vários eventos
+### Listagem de um evento
 GET http://localhost:3000/events/1
 
 ### Listagem de evento pelo parceiro
 GET http://localhost:3000/partners/events
-Authorization: Bearer {{ tokenPartner2 }}
+Authorization: Bearer {{ tokenPartner1 }}
 
 ### Listagem de um evento pelo parceiro
 GET http://localhost:3000/partners/events/1
