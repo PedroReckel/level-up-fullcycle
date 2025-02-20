@@ -1,12 +1,11 @@
 import express from 'express';
-import * as mysql from 'mysql2/promise';
-import jwt from "jsonwebtoken";
-import { createConnection } from './database';
+;import jwt from "jsonwebtoken";
 import { authRoutes } from './controller/auth-controller';
 import { partnerRoutes } from './controller/partner-controller';
 import { customerRoutes } from './controller/customer-controller';
 import { eventRoutes } from './controller/event-controller';
 import { UserService } from './services/user-service';
+import { Database } from './database';
 
 const app = express();
 
@@ -67,7 +66,7 @@ app.use('/event', eventRoutes);
 
 app.listen(3000, async () => {
     // Limpar a tabela depois que a aplicação é reiniciada
-    const connection = await createConnection();
+    const connection = Database.getInstance();
     await connection.execute("SET FOREIGN_KEY_CHECKS = 0");
     await connection.execute("TRUNCATE TABLE events");
     await connection.execute("TRUNCATE TABLE customers");
@@ -76,3 +75,10 @@ app.listen(3000, async () => {
     await connection.execute("SET FOREIGN_KEY_CHECKS = 1");
     console.log('Running in http://localhost:3000')
 });
+
+
+// MVC - Modal View Controller (Arquitetura em camadas)
+
+// Application Service - O que eu quero expor como regras cruciais da aplicação
+// Domain Service - Criptografar senha
+// Active Record - Encapsular lógica de arma. e de negócio
