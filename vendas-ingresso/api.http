@@ -98,6 +98,15 @@ Authorization: Bearer {{ tokenPartner1 }}
     "location": "location"
 }
 
+### Criação de tickets
+GET http://localhost:3000/events/1/tickets
+Content-Type: application/json
+Authorization: Bearer {{ tokenPartner1 }}
+
+{
+    "num_tickets": 10,
+    "price": 100
+}
 
 ### Listagem de eventos
 GET http://localhost:3000/events

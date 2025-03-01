@@ -6,6 +6,7 @@ import { customerRoutes } from './controller/customer-controller';
 import { eventRoutes } from './controller/event-controller';
 import { UserService } from './services/user-service';
 import { Database } from './database';
+import { ticketRoutes } from './controller/ticket-controller';
 
 const app = express();
 
@@ -63,6 +64,7 @@ app.use('/auth', authRoutes);
 app.use('/partners', partnerRoutes);
 app.use('/customers', customerRoutes);
 app.use('/event', eventRoutes);
+app.use('/events/:eventId/tickets', ticketRoutes);
 
 app.listen(3000, async () => {
     // Limpar a tabela depois que a aplicação é reiniciada
