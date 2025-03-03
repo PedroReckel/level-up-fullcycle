@@ -99,7 +99,7 @@ Authorization: Bearer {{ tokenPartner1 }}
 }
 
 ### Criação de tickets
-GET http://localhost:3000/events/1/tickets
+POST http://localhost:3000/events/1/tickets
 Content-Type: application/json
 Authorization: Bearer {{ tokenPartner1 }}
 

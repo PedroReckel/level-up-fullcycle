@@ -8,21 +8,21 @@ export class TicketService {
         numTickets: number,
         price: number;
     }) {
-        const event = EventModel.findById(data.eventId);
+        const event = await EventModel.findById(data.eventId);
 
         if (!event) {
             throw new Error('Event not Found');
         }
 
-        const TicketsData = Array(data.numTickets)
+        const ticketsData = Array(data.numTickets)
             .fill({})
             .map((_, index) => ({
                 location: `Location ${index}`,
-                event_id: data.eventId,
+                event_id: event.id,
                 price: data.price,
                 status: TicketStatus.available,
             }));
 
-        await TicketModel.createMany(TicketsData)
+        await TicketModel.createMany(ticketsData)
     }
 }

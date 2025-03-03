@@ -63,13 +63,14 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/partners', partnerRoutes);
 app.use('/customers', customerRoutes);
-app.use('/event', eventRoutes);
-app.use('/events/:eventId/tickets', ticketRoutes);
+app.use('/events', eventRoutes);
+app.use('/events', ticketRoutes);
 
 app.listen(3000, async () => {
     // Limpar a tabela depois que a aplicação é reiniciada
     const connection = Database.getInstance();
     await connection.execute("SET FOREIGN_KEY_CHECKS = 0");
+    await connection.execute("TRUNCATE TABLE tickets")
     await connection.execute("TRUNCATE TABLE events");
     await connection.execute("TRUNCATE TABLE customers");
     await connection.execute("TRUNCATE TABLE partners");
