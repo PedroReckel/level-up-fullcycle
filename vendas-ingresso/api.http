@@ -108,6 +108,9 @@ Authorization: Bearer {{ tokenPartner1 }}
     "price": 100
 }
 
+### Listagem de um tickets
+GET http://localhost:3000/events/1/tickets
+
 ### Listagem de eventos
 GET http://localhost:3000/events
 
@@ -121,3 +124,13 @@ Authorization: Bearer {{ tokenPartner1 }}
 ### Listagem de um evento pelo parceiro
 GET http://localhost:3000/partners/events/1
 Authorization: Bearer {{ tokenPartner1 }}
+
+### Criação das purchases
+POST http://localhost:3000/purchases
+Content-Type: application/json
+Authorization: Bearer {{ tokenCustomer1 }}
+
+{
+    "ticket_ids": [1],
+    "card_token": "tok_visa" // Em aplicações profissionais nunca se passa as informações do cartão de credito, no front-end tem uma chamada para a api do cartão de credito que retorna um token com as informações do cartao
+}
