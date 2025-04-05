@@ -3,7 +3,7 @@
 
 ###
 # @name loginPartner1
-POST http://localhost:3000/auth/login
+POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ###
 # @name loginPartner2
-POST http://localhost:3000/auth/login
+POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 # @name loginCustomer1
-POST http://localhost:3000/auth/login
+POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
@@ -42,7 +42,7 @@ Content-Type: application/json
 @tokenCustomer1 = {{ loginCustomer1.response.body.token }}
 
 ### Criação do partner 1
-POST http://localhost:3000/partners/register
+POST http://localhost:8080/partners/register
 Content-Type: application/json
 
 {
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### Criação do partner 2
-POST http://localhost:3000/partners/register
+POST http://localhost:8080/partners/register
 Content-Type: application/json
 
 {
@@ -64,7 +64,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/customers/register
+POST http://localhost:8080/customers/register
 Content-Type: application/json
 
 {
@@ -76,7 +76,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/events
+POST http://localhost:8080/events
 Content-Type: application/json
 
 {
@@ -87,7 +87,7 @@ Content-Type: application/json
 }
 
 ### Criação do evento pelo parceiro
-POST http://localhost:3000/partners/events
+POST http://localhost:8080/partners/events
 Content-Type: application/json
 Authorization: Bearer {{ tokenPartner1 }}
 
@@ -99,7 +99,7 @@ Authorization: Bearer {{ tokenPartner1 }}
 }
 
 ### Criação de tickets
-POST http://localhost:3000/events/1/tickets
+POST http://localhost:8080/events/1/tickets
 Content-Type: application/json
 Authorization: Bearer {{ tokenPartner1 }}
 
@@ -109,24 +109,24 @@ Authorization: Bearer {{ tokenPartner1 }}
 }
 
 ### Listagem de um tickets
-GET http://localhost:3000/events/1/tickets
+GET http://localhost:8080/events/1/tickets
 
 ### Listagem de eventos
-GET http://localhost:3000/events
+GET http://localhost:8080/events
 
 ### Listagem de um evento
-GET http://localhost:3000/events/1
+GET http://localhost:8080/events/1
 
 ### Listagem de evento pelo parceiro
-GET http://localhost:3000/partners/events
+GET http://localhost:8080/partners/events
 Authorization: Bearer {{ tokenPartner1 }}
 
 ### Listagem de um evento pelo parceiro
-GET http://localhost:3000/partners/events/1
+GET http://localhost:8080/partners/events/1
 Authorization: Bearer {{ tokenPartner1 }}
 
 ### Criação das purchases
-POST http://localhost:3000/purchases
+POST http://localhost:8080/purchases
 Content-Type: application/json
 Authorization: Bearer {{ tokenCustomer1 }}
 

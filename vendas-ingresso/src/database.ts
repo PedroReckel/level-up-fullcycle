@@ -9,22 +9,22 @@ export class Database {
     private constructor() {}
 
     public static getInstance(): mysql.Pool { // Metodo estático para pegar a instância do banco de dados que vai devolver a instância do pool
-        if(!Database.instance) {
+        if (!Database.instance) {
             Database.instance = mysql.createPool({
-                host: 'localhost',
-                user: 'root',
-                password: 'root',
-                database: 'tickets',
-                port: 33060,
-                waitForConnections: true,
-                connectionLimit: 10,
-                queueLimit: 0,
+              host: process.env.MYSQL_HOST,
+              user: process.env.MYSQL_USER,
+              password: process.env.MYSQL_PASSWORD,
+              database: process.env.MYSQL_DATABASE,
+              port: parseInt(process.env.MYSQL_PORT),
+              waitForConnections: true,
+              connectionLimit: 10,
+              queueLimit: 0,
             });
+          }
+      
+          return Database.instance;
         }
-
-        return Database.instance;
-    };
-}
+      }
 
 // export function createConnection() {
 //      return mysql.createPool({
